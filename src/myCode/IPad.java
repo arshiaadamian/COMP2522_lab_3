@@ -1,11 +1,14 @@
+import java.util.Objects;
+
 public class IPad extends IDevice
 {
     private boolean hasCase;
     private String operatingSystem;
 
-    IPad(String purpose, boolean hasCase, String operatingSystem)
+    IPad(boolean hasCase,
+         String operatingSystem)
     {
-        super(purpose);
+        super("learning");
         this.hasCase = hasCase;
         this.operatingSystem = operatingSystem;
     }
@@ -45,5 +48,34 @@ public class IPad extends IDevice
         return super.toString() +
                 "\nThe iPad does " + (hasCase ? "" : "not ") + "have a case" +
                 "\nThe iPad's operatingSystem is " + operatingSystem;
+    }
+
+    @Override
+    public boolean equals(Object that)
+    {
+        if (this == that)
+        {
+            return true;
+        }
+
+        if (that == null)
+        {
+            return false;
+        }
+
+        if (!(that instanceof IPad))
+        {
+            return false;
+        }
+
+        final IPad device;
+        device = (IPad) that;
+        return this.operatingSystem.equals(device.operatingSystemGetter());
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hashCode(this.operatingSystem);
     }
 }

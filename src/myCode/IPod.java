@@ -1,22 +1,23 @@
+import java.util.Objects;
+
 public class IPod extends IDevice
 {
     private int numberOfSongs;
-    private double maxVolume;
+    private double maxVolumeDB;
 
-    IPod(final String purpose,
-         final int numberOfSongs,
-         final double maxVolume)
+    IPod(final int numberOfSongs,
+         final double maxVolumeDB)
     {
-        super(purpose);
+        super("music");
         this.numberOfSongs = numberOfSongs;
-        this.maxVolume = maxVolume;
+        this.maxVolumeDB = maxVolumeDB;
     }
 
     @Override
     public void printDetails()
     {
         String details = "The number of songs stored is " + numberOfSongs +
-                "\nThe maximum volume is " + maxVolume;
+                "\nThe maximum volume is " + maxVolumeDB;
 
         System.out.println(details);
     }
@@ -33,12 +34,12 @@ public class IPod extends IDevice
 
     public double maxVolumeGetter()
     {
-        return maxVolume;
+        return maxVolumeDB;
     }
 
-    public void maxVolumeMutator(final double newMaxVolume)
+    public void maxVolumeMutator(final double maxVolumeDB)
     {
-        maxVolume = newMaxVolume;
+        this.maxVolumeDB = maxVolumeDB;
     }
 
     @Override
@@ -46,7 +47,36 @@ public class IPod extends IDevice
     {
        return super.toString() +
                 "\nnumber of songs is: " + numberOfSongs +
-               "\nmax voluem is: " + maxVolume;
+               "\nmax voluem is: " + maxVolumeDB;
+    }
+
+    @Override
+    public boolean equals(Object that)
+    {
+        if (this == that)
+        {
+            return true;
+        }
+
+        if (that == null)
+        {
+            return false;
+        }
+
+        if (!(that instanceof IPod))
+        {
+            return false;
+        }
+
+        final IPod device;
+        device = (IPod)that;
+        return numberOfSongs == device.numberOfSongsGetter();
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hashCode(numberOfSongs);
     }
 
 }
