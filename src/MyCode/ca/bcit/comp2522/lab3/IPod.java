@@ -89,7 +89,7 @@ public class IPod extends IDevice {
     public String toString() {
         return super.toString() +
                 "\nnumber of songs is: " + numberOfSongs +
-                "\nmax voluem is: " + maxVolumeDB;
+                "\nmax volume is: " + maxVolumeDB;
     }
 
     /**
