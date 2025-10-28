@@ -4,7 +4,7 @@ package ca.bcit.comp2522.lab3;
  * Represents an iPad device used for learning purposes.
  * Stores information about whether it has a protective case
  * and the operating system it runs on.
- *
+ * <p>
  * Invariant: operatingSystem is non-null.
  *
  * @author Arshia Adamian
@@ -13,50 +13,40 @@ package ca.bcit.comp2522.lab3;
  * @author Abdullah Alasmy
  * @version 1.0
  */
+
 import java.util.Objects;
 
-public class IPad extends IDevice
-{
+public class IPad extends IDevice {
 
-    /**
-     * Indicates whether the iPad has a protective case.
-     */
-    private boolean hasCase;
-
-    /**
-     * The operating system installed on this iPad.
-     */
+    private boolean withCase;
     private String operatingSystem;
 
     /**
      * Constructs an IPad object with the specified attributes.
      *
-     * @param hasCase          true if the iPad has a case, false otherwise
-     * @param operatingSystem  the operating system of the iPad
+     * @param withCase        true if the iPad has a case, false otherwise
+     * @param operatingSystem the operating system of the iPad
      */
-    IPad(final boolean hasCase, final String operatingSystem)
-    {
+    IPad(final boolean withCase,
+         final String operatingSystem) {
         super("learning");
-        this.hasCase = hasCase;
+        this.withCase = withCase;
         this.operatingSystem = operatingSystem;
     }
 
     @Override
-    public void printDetails()
-    {
+    public void printDetails() {
         final String details;
-        final String hasCaseWord;
+        final String withCaseWord;
 
-        if (hasCase)
-        {
-            hasCaseWord = "";
+        if (withCase) {
+            withCaseWord = "";
         }
-        else
-        {
-            hasCaseWord = "not";
+        else {
+            withCaseWord = "not";
         }
 
-        details = "IPad does " + hasCaseWord + "have a case" +
+        details = "IPad does " + withCaseWord + "have a case" +
                 "\nIPad's operating system is " + operatingSystem;
 
         System.out.println(details);
@@ -67,9 +57,8 @@ public class IPad extends IDevice
      *
      * @return true if the iPad has a case; false otherwise
      */
-    public boolean hasCaseGetter()
-    {
-        return hasCase;
+    public boolean hasCase() {
+        return withCase;
     }
 
     /**
@@ -77,19 +66,17 @@ public class IPad extends IDevice
      *
      * @return the operating system name
      */
-    public String operatingSystemGetter()
-    {
+    public String operatingSystemGetter() {
         return operatingSystem;
     }
 
     /**
      * Updates whether this iPad has a case.
      *
-     * @param hasCase true if the iPad now has a case; false otherwise
+     * @param withCase true if the iPad now has a case; false otherwise
      */
-    public void hasCaseMutator(final boolean hasCase)
-    {
-        this.hasCase = hasCase;
+    public void mutateCase(final boolean withCase) {
+        this.withCase = withCase;
     }
 
     /**
@@ -97,8 +84,7 @@ public class IPad extends IDevice
      *
      * @param operatingSystem the new operating system
      */
-    public void operatingSystemMutator(final String operatingSystem)
-    {
+    public void mutateOperatingSystem(final String operatingSystem) {
         this.operatingSystem = operatingSystem;
     }
 
@@ -108,10 +94,9 @@ public class IPad extends IDevice
      * @return a formatted string containing the iPad details
      */
     @Override
-    public String toString()
-    {
+    public String toString() {
         return super.toString() +
-                "\nThe iPad does " + (hasCase ? "" : "not ") + "have a case" +
+                "\nThe iPad does " + (withCase ? "" : "not ") + "have a case" +
                 "\nThe iPad's operating system is " + operatingSystem;
     }
 
@@ -123,8 +108,7 @@ public class IPad extends IDevice
      * @return true if both objects are IPad instances with equal operating systems; false otherwise
      */
     @Override
-    public boolean equals(final Object that)
-    {
+    public boolean equals(final Object that) {
         if (this == that) {
             return true;
         }
@@ -139,7 +123,11 @@ public class IPad extends IDevice
 
         final IPad device;
         device = (IPad) that;
-        return this.operatingSystem.equals(device.operatingSystemGetter());
+
+        final boolean operatingSystemsMatch;
+        operatingSystemsMatch = this.operatingSystem.equals(device.operatingSystemGetter());
+
+        return operatingSystemsMatch;
     }
 
     /**
@@ -148,8 +136,7 @@ public class IPad extends IDevice
      * @return the hash code based on the operating system
      */
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         return Objects.hashCode(this.operatingSystem);
     }
 }

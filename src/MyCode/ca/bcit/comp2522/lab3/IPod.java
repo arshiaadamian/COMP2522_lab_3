@@ -3,7 +3,7 @@ package ca.bcit.comp2522.lab3;
 /**
  * Represents an iPod device used for music purposes.
  * Stores the number of songs and the maximum volume (in dB).
- *
+ * <p>
  * Invariants: numberOfSongs >= 0; maxVolumeDB >= 0.
  *
  * @author Arshia Adamian
@@ -12,10 +12,10 @@ package ca.bcit.comp2522.lab3;
  * @author Abdullah Alasmy
  * @version 1.0
  */
+
 import java.util.Objects;
 
-public class IPod extends IDevice
-{
+public class IPod extends IDevice {
 
     private int numberOfSongs;
     private double maxVolumeDB;
@@ -27,8 +27,7 @@ public class IPod extends IDevice
      * @param maxVolumeDB   the maximum volume in decibels (dB)
      */
     IPod(final int numberOfSongs,
-         final double maxVolumeDB)
-    {
+         final double maxVolumeDB) {
         super("music");
         this.numberOfSongs = numberOfSongs;
         this.maxVolumeDB = maxVolumeDB;
@@ -38,8 +37,7 @@ public class IPod extends IDevice
      * Prints the details of this iPod.
      */
     @Override
-    public void printDetails()
-    {
+    public void printDetails() {
         String details = "The number of songs stored is " + numberOfSongs +
                 "\nThe maximum volume is " + maxVolumeDB;
 
@@ -51,8 +49,7 @@ public class IPod extends IDevice
      *
      * @return the number of songs
      */
-    public int numberOfSongsGetter()
-    {
+    public int getNumberOfSongs() {
         return numberOfSongs;
     }
 
@@ -61,8 +58,7 @@ public class IPod extends IDevice
      *
      * @param newNumberOfSongs the new song count
      */
-    public void numberOfSongsMutator(final int newNumberOfSongs)
-    {
+    public void mutateNumberOfSongs(final int newNumberOfSongs) {
         numberOfSongs = newNumberOfSongs;
     }
 
@@ -71,8 +67,7 @@ public class IPod extends IDevice
      *
      * @return the maximum volume (dB)
      */
-    public double maxVolumeGetter()
-    {
+    public double getMaxVolume() {
         return maxVolumeDB;
     }
 
@@ -81,8 +76,7 @@ public class IPod extends IDevice
      *
      * @param maxVolumeDB the new maximum volume (dB)
      */
-    public void maxVolumeMutator(final double maxVolumeDB)
-    {
+    public void mutateMaxVolume(final double maxVolumeDB) {
         this.maxVolumeDB = maxVolumeDB;
     }
 
@@ -92,8 +86,7 @@ public class IPod extends IDevice
      * @return a formatted string with song count and max volume
      */
     @Override
-    public String toString()
-    {
+    public String toString() {
         return super.toString() +
                 "\nnumber of songs is: " + numberOfSongs +
                 "\nmax voluem is: " + maxVolumeDB;
@@ -107,8 +100,7 @@ public class IPod extends IDevice
      * @return true if both are IPod instances with equal song counts; false otherwise
      */
     @Override
-    public boolean equals(final Object that)
-    {
+    public boolean equals(final Object that) {
         if (this == that) {
             return true;
         }
@@ -123,7 +115,11 @@ public class IPod extends IDevice
 
         final IPod device;
         device = (IPod) that;
-        return numberOfSongs == device.numberOfSongsGetter();
+
+        final boolean numberOfSongsMatch;
+        numberOfSongsMatch = numberOfSongs == device.getNumberOfSongs();
+
+        return numberOfSongsMatch;
     }
 
     /**
@@ -132,8 +128,7 @@ public class IPod extends IDevice
      * @return a hash code based on the number of songs
      */
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         return Objects.hashCode(numberOfSongs);
     }
 }

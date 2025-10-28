@@ -3,7 +3,7 @@ package ca.bcit.comp2522.lab3;
 /**
  * Represents an iPhone 16, a subclass of IPhone that adds
  * high-resolution camera capability and additional memory information.
- *
+ * <p>
  * Invariant: memoryGB is non-negative.
  *
  * @author Arshia Adamian
@@ -12,10 +12,10 @@ package ca.bcit.comp2522.lab3;
  * @author Abdullah Alasmy
  * @version 1.0
  */
+
 import java.util.Objects;
 
-public class IPhone16 extends IPhone
-{
+public class IPhone16 extends IPhone {
 
     private boolean highResolutionCamera;
     private int memoryGB;
@@ -23,16 +23,15 @@ public class IPhone16 extends IPhone
     /**
      * Constructs an IPhone16 object with the specified properties.
      *
-     * @param remainingMinutes      the remaining talk minutes
-     * @param carrier               the carrier name
-     * @param highResolutionCamera  true if the phone has a high-resolution camera
-     * @param memoryGB              the memory capacity in gigabytes
+     * @param remainingMinutes     the remaining talk minutes
+     * @param carrier              the carrier name
+     * @param highResolutionCamera true if the phone has a high-resolution camera
+     * @param memoryGB             the memory capacity in gigabytes
      */
     IPhone16(final double remainingMinutes,
              final String carrier,
              final boolean highResolutionCamera,
-             final int memoryGB)
-    {
+             final int memoryGB) {
         super(remainingMinutes, carrier);
         this.highResolutionCamera = highResolutionCamera;
         this.memoryGB = memoryGB;
@@ -43,8 +42,7 @@ public class IPhone16 extends IPhone
      *
      * @return true if the iPhone 16 has a high-resolution camera; false otherwise
      */
-    public boolean highResolutionCameraGetter()
-    {
+    public boolean getHighResolutionCamera() {
         return highResolutionCamera;
     }
 
@@ -53,8 +51,7 @@ public class IPhone16 extends IPhone
      *
      * @param highResolutionCamera true if the phone now has a high-resolution camera; false otherwise
      */
-    public void highResolutionCameraMutator(final boolean highResolutionCamera)
-    {
+    public void mutateHighResolutionCamera(final boolean highResolutionCamera) {
         this.highResolutionCamera = highResolutionCamera;
     }
 
@@ -63,8 +60,7 @@ public class IPhone16 extends IPhone
      *
      * @return the memory in gigabytes
      */
-    public int memoryGBGetter()
-    {
+    public int getMemoryGB() {
         return memoryGB;
     }
 
@@ -73,8 +69,7 @@ public class IPhone16 extends IPhone
      *
      * @param memoryGB the new memory capacity in gigabytes
      */
-    public void memoryGBMutator(final int memoryGB)
-    {
+    public void mutateMemoryGB(final int memoryGB) {
         this.memoryGB = memoryGB;
     }
 
@@ -84,8 +79,7 @@ public class IPhone16 extends IPhone
      * @return a formatted string containing the iPhone 16 details
      */
     @Override
-    public String toString()
-    {
+    public String toString() {
         return super.toString() +
                 "\nIPhone16 does" + (highResolutionCamera ? " " : " not ") +
                 "have a high-resolution camera" +
@@ -101,8 +95,7 @@ public class IPhone16 extends IPhone
      * @return true if both are IPhone16 instances with equal values; false otherwise
      */
     @Override
-    public boolean equals(final Object that)
-    {
+    public boolean equals(final Object that) {
         if (this == that) {
             return true;
         }
@@ -117,12 +110,12 @@ public class IPhone16 extends IPhone
 
         final IPhone16 device;
         device = (IPhone16) that;
-        final boolean equalMinutesAndResolution;
+        final boolean minutesAndResolutionMatch;
 
-        equalMinutesAndResolution = (this.remainingMinutesGetter() == device.remainingMinutesGetter())
-                && (this.highResolutionCamera == device.highResolutionCameraGetter());
+        minutesAndResolutionMatch = (this.getRemainingMinutes() == device.getRemainingMinutes())
+                && (this.highResolutionCamera == device.getHighResolutionCamera());
 
-        return equalMinutesAndResolution;
+        return minutesAndResolutionMatch;
     }
 
     /**
@@ -131,8 +124,7 @@ public class IPhone16 extends IPhone
      * @return a hash code based on the remaining minutes
      */
     @Override
-    public int hashCode()
-    {
-        return Objects.hashCode(this.remainingMinutesGetter());
+    public int hashCode() {
+        return Objects.hashCode(this.getRemainingMinutes());
     }
 }

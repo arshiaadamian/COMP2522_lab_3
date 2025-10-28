@@ -3,7 +3,7 @@ package ca.bcit.comp2522.lab3;
 /**
  * Represents an iPhone device used for talking purposes.
  * Stores information about its remaining minutes and carrier.
- *
+ * <p>
  * Invariant: carrier is non-null.
  *
  * @author Arshia Adamian
@@ -12,10 +12,10 @@ package ca.bcit.comp2522.lab3;
  * @author Abdullah Alasmy
  * @version 1.0
  */
+
 import java.util.Objects;
 
-public class IPhone extends IDevice
-{
+public class IPhone extends IDevice {
     private double remainingMinutes;
     private String carrier;
 
@@ -26,8 +26,7 @@ public class IPhone extends IDevice
      * @param carrier          the carrier name
      */
     IPhone(final double remainingMinutes,
-           final String carrier)
-    {
+           final String carrier) {
         super("talking");
         this.remainingMinutes = remainingMinutes;
         this.carrier = carrier;
@@ -37,8 +36,7 @@ public class IPhone extends IDevice
      * Prints the details of this iPhone.
      */
     @Override
-    public void printDetails()
-    {
+    public void printDetails() {
         final String details;
         details = "The remaining minutes on this iPhone is " + remainingMinutes +
                 "\nThe carrier is " + carrier;
@@ -50,8 +48,7 @@ public class IPhone extends IDevice
      *
      * @return the remaining minutes
      */
-    public double remainingMinutesGetter()
-    {
+    public double getRemainingMinutes() {
         return remainingMinutes;
     }
 
@@ -60,8 +57,7 @@ public class IPhone extends IDevice
      *
      * @return the carrier name
      */
-    public String carrierGetter()
-    {
+    public String getCarrier() {
         return carrier;
     }
 
@@ -70,8 +66,7 @@ public class IPhone extends IDevice
      *
      * @param remainingMinutes the new number of remaining minutes
      */
-    public void remainingMinutesMutator(final double remainingMinutes)
-    {
+    public void mutateRemainingMinutes(final double remainingMinutes) {
         this.remainingMinutes = remainingMinutes;
     }
 
@@ -80,8 +75,7 @@ public class IPhone extends IDevice
      *
      * @param carrier the new carrier name
      */
-    public void carrierMutator(final String carrier)
-    {
+    public void mutateCarrier(final String carrier) {
         this.carrier = carrier;
     }
 
@@ -91,8 +85,7 @@ public class IPhone extends IDevice
      * @return a formatted string containing the iPhone details
      */
     @Override
-    public String toString()
-    {
+    public String toString() {
         return super.toString() +
                 "\nThe remaining minutes is: " + remainingMinutes +
                 "\nThe carrier is: " + carrier;
@@ -106,8 +99,7 @@ public class IPhone extends IDevice
      * @return true if both are IPhone instances with equal remaining minutes; false otherwise
      */
     @Override
-    public boolean equals(final Object that)
-    {
+    public boolean equals(final Object that) {
         if (this == that) {
             return true;
         }
@@ -122,7 +114,7 @@ public class IPhone extends IDevice
 
         final IPhone device;
         device = (IPhone) that;
-        return this.remainingMinutes == device.remainingMinutesGetter();
+        return this.remainingMinutes == device.getRemainingMinutes();
     }
 
     /**
@@ -131,8 +123,7 @@ public class IPhone extends IDevice
      * @return the hash code based on remaining minutes
      */
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         return Objects.hashCode(this.remainingMinutes);
     }
 }
