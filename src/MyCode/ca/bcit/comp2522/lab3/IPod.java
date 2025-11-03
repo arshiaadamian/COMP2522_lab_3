@@ -1,10 +1,10 @@
 package ca.bcit.comp2522.lab3;
 
+import java.util.Objects;
+
 /**
  * Represents an iPod device used for music purposes.
  * Stores the number of songs and the maximum volume (in dB).
- * <p>
- * Invariants: numberOfSongs >= 0; maxVolumeDB >= 0.
  *
  * @author Arshia Adamian
  * @author Rodrick Vizigro
@@ -12,10 +12,9 @@ package ca.bcit.comp2522.lab3;
  * @author Abdullah Alasmy
  * @version 1.0
  */
-
-import java.util.Objects;
-
-public class IPod extends IDevice {
+public class IPod
+        extends IDevice
+{
 
     private int numberOfSongs;
     private double maxVolumeDB;
@@ -27,18 +26,21 @@ public class IPod extends IDevice {
      * @param maxVolumeDB   the maximum volume in decibels (dB)
      */
     IPod(final int numberOfSongs,
-         final double maxVolumeDB) {
-        super("music");
-        this.numberOfSongs = numberOfSongs;
-        this.maxVolumeDB = maxVolumeDB;
+         final double maxVolumeDB)
+    {
+         super("music");
+         this.numberOfSongs = numberOfSongs;
+         this.maxVolumeDB = maxVolumeDB;
     }
 
     /**
      * Prints the details of this iPod.
      */
     @Override
-    public void printDetails() {
-        String details = "The number of songs stored is " + numberOfSongs +
+    public void printDetails()
+    {
+        final String details;
+        details = "The number of songs stored is " + numberOfSongs +
                 "\nThe maximum volume is " + maxVolumeDB;
 
         System.out.println(details);
@@ -49,7 +51,8 @@ public class IPod extends IDevice {
      *
      * @return the number of songs
      */
-    public int getNumberOfSongs() {
+    public int getNumberOfSongs()
+    {
         return numberOfSongs;
     }
 
@@ -58,7 +61,8 @@ public class IPod extends IDevice {
      *
      * @param newNumberOfSongs the new song count
      */
-    public void mutateNumberOfSongs(final int newNumberOfSongs) {
+    public void mutateNumberOfSongs(final int newNumberOfSongs)
+    {
         numberOfSongs = newNumberOfSongs;
     }
 
@@ -67,7 +71,8 @@ public class IPod extends IDevice {
      *
      * @return the maximum volume (dB)
      */
-    public double getMaxVolume() {
+    public double getMaxVolume()
+    {
         return maxVolumeDB;
     }
 
@@ -76,7 +81,8 @@ public class IPod extends IDevice {
      *
      * @param maxVolumeDB the new maximum volume (dB)
      */
-    public void mutateMaxVolume(final double maxVolumeDB) {
+    public void mutateMaxVolume(final double maxVolumeDB)
+    {
         this.maxVolumeDB = maxVolumeDB;
     }
 
@@ -86,10 +92,14 @@ public class IPod extends IDevice {
      * @return a formatted string with song count and max volume
      */
     @Override
-    public String toString() {
-        return super.toString() +
+    public String toString()
+    {
+        final String details;
+        details = super.toString() +
                 "\nnumber of songs is: " + numberOfSongs +
                 "\nmax volume is: " + maxVolumeDB;
+
+        return details;
     }
 
     /**
@@ -100,16 +110,20 @@ public class IPod extends IDevice {
      * @return true if both are IPod instances with equal song counts; false otherwise
      */
     @Override
-    public boolean equals(final Object that) {
-        if (this == that) {
+    public boolean equals(final Object that)
+    {
+        if (this == that)
+        {
             return true;
         }
 
-        if (that == null) {
+        if (that == null)
+        {
             return false;
         }
 
-        if (!(that instanceof IPod)) {
+        if (!(that instanceof IPod))
+        {
             return false;
         }
 
@@ -117,7 +131,7 @@ public class IPod extends IDevice {
         device = (IPod) that;
 
         final boolean numberOfSongsMatch;
-        numberOfSongsMatch = numberOfSongs == device.getNumberOfSongs();
+        numberOfSongsMatch = (numberOfSongs == device.getNumberOfSongs());
 
         return numberOfSongsMatch;
     }
@@ -128,7 +142,8 @@ public class IPod extends IDevice {
      * @return a hash code based on the number of songs
      */
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         return Objects.hashCode(numberOfSongs);
     }
 }

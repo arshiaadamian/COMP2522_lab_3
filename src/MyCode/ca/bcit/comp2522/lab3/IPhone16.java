@@ -1,10 +1,10 @@
 package ca.bcit.comp2522.lab3;
 
+import java.util.Objects;
+
 /**
  * Represents an iPhone 16, a subclass of IPhone that adds
  * high-resolution camera capability and additional memory information.
- * <p>
- * Invariant: memoryGB is non-negative.
  *
  * @author Arshia Adamian
  * @author Rodrick Vizigro
@@ -12,10 +12,9 @@ package ca.bcit.comp2522.lab3;
  * @author Abdullah Alasmy
  * @version 1.0
  */
-
-import java.util.Objects;
-
-public class IPhone16 extends IPhone {
+public class IPhone16
+        extends IPhone
+{
 
     private boolean highResolutionCamera;
     private int memoryGB;
@@ -31,7 +30,8 @@ public class IPhone16 extends IPhone {
     IPhone16(final double remainingMinutes,
              final String carrier,
              final boolean highResolutionCamera,
-             final int memoryGB) {
+             final int memoryGB)
+    {
         super(remainingMinutes, carrier);
         this.highResolutionCamera = highResolutionCamera;
         this.memoryGB = memoryGB;
@@ -42,7 +42,8 @@ public class IPhone16 extends IPhone {
      *
      * @return true if the iPhone 16 has a high-resolution camera; false otherwise
      */
-    public boolean getHighResolutionCamera() {
+    public boolean getHighResolutionCamera()
+    {
         return highResolutionCamera;
     }
 
@@ -51,7 +52,8 @@ public class IPhone16 extends IPhone {
      *
      * @param highResolutionCamera true if the phone now has a high-resolution camera; false otherwise
      */
-    public void mutateHighResolutionCamera(final boolean highResolutionCamera) {
+    public void mutateHighResolutionCamera(final boolean highResolutionCamera)
+    {
         this.highResolutionCamera = highResolutionCamera;
     }
 
@@ -60,7 +62,8 @@ public class IPhone16 extends IPhone {
      *
      * @return the memory in gigabytes
      */
-    public int getMemoryGB() {
+    public int getMemoryGB()
+    {
         return memoryGB;
     }
 
@@ -69,7 +72,8 @@ public class IPhone16 extends IPhone {
      *
      * @param memoryGB the new memory capacity in gigabytes
      */
-    public void mutateMemoryGB(final int memoryGB) {
+    public void mutateMemoryGB(final int memoryGB)
+    {
         this.memoryGB = memoryGB;
     }
 
@@ -79,11 +83,15 @@ public class IPhone16 extends IPhone {
      * @return a formatted string containing the iPhone 16 details
      */
     @Override
-    public String toString() {
-        return super.toString() +
+    public String toString()
+    {
+        final String details;
+        details = super.toString() +
                 "\nIPhone16 does" + (highResolutionCamera ? " " : " not ") +
                 "have a high-resolution camera" +
                 "\nIPhone16 has " + memoryGB + " gigabytes of memory";
+
+        return details;
     }
 
     /**
@@ -95,16 +103,20 @@ public class IPhone16 extends IPhone {
      * @return true if both are IPhone16 instances with equal values; false otherwise
      */
     @Override
-    public boolean equals(final Object that) {
-        if (this == that) {
+    public boolean equals(final Object that)
+    {
+        if (this == that)
+        {
             return true;
         }
 
-        if (that == null) {
+        if (that == null)
+        {
             return false;
         }
 
-        if (!(that instanceof IPhone16)) {
+        if (!(that instanceof IPhone16))
+        {
             return false;
         }
 
@@ -124,7 +136,8 @@ public class IPhone16 extends IPhone {
      * @return a hash code based on the remaining minutes
      */
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         return Objects.hashCode(this.getRemainingMinutes());
     }
 }

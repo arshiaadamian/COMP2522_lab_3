@@ -1,5 +1,7 @@
 package ca.bcit.comp2522.lab3;
 
+import java.util.Objects;
+
 /**
  * Represents an iPhone device used for talking purposes.
  * Stores information about its remaining minutes and carrier.
@@ -12,10 +14,9 @@ package ca.bcit.comp2522.lab3;
  * @author Abdullah Alasmy
  * @version 1.0
  */
-
-import java.util.Objects;
-
-public class IPhone extends IDevice {
+public class IPhone
+        extends IDevice
+{
     private double remainingMinutes;
     private String carrier;
 
@@ -26,20 +27,23 @@ public class IPhone extends IDevice {
      * @param carrier          the carrier name
      */
     IPhone(final double remainingMinutes,
-           final String carrier) {
-        super("talking");
-        this.remainingMinutes = remainingMinutes;
-        this.carrier = carrier;
+           final String carrier)
+    {
+           super("talking");
+           this.remainingMinutes = remainingMinutes;
+           this.carrier = carrier;
     }
 
     /**
      * Prints the details of this iPhone.
      */
     @Override
-    public void printDetails() {
+    public void printDetails()
+    {
         final String details;
         details = "The remaining minutes on this iPhone is " + remainingMinutes +
                 "\nThe carrier is " + carrier;
+
         System.out.println(details);
     }
 
@@ -48,7 +52,8 @@ public class IPhone extends IDevice {
      *
      * @return the remaining minutes
      */
-    public double getRemainingMinutes() {
+    public double getRemainingMinutes()
+    {
         return remainingMinutes;
     }
 
@@ -57,7 +62,8 @@ public class IPhone extends IDevice {
      *
      * @return the carrier name
      */
-    public String getCarrier() {
+    public String getCarrier()
+    {
         return carrier;
     }
 
@@ -66,7 +72,8 @@ public class IPhone extends IDevice {
      *
      * @param remainingMinutes the new number of remaining minutes
      */
-    public void mutateRemainingMinutes(final double remainingMinutes) {
+    public void mutateRemainingMinutes(final double remainingMinutes)
+    {
         this.remainingMinutes = remainingMinutes;
     }
 
@@ -75,7 +82,8 @@ public class IPhone extends IDevice {
      *
      * @param carrier the new carrier name
      */
-    public void mutateCarrier(final String carrier) {
+    public void mutateCarrier(final String carrier)
+    {
         this.carrier = carrier;
     }
 
@@ -85,10 +93,14 @@ public class IPhone extends IDevice {
      * @return a formatted string containing the iPhone details
      */
     @Override
-    public String toString() {
-        return super.toString() +
+    public String toString()
+    {
+        final  String details;
+        details = super.toString() +
                 "\nThe remaining minutes is: " + remainingMinutes +
                 "\nThe carrier is: " + carrier;
+
+        return details;
     }
 
     /**
@@ -99,22 +111,30 @@ public class IPhone extends IDevice {
      * @return true if both are IPhone instances with equal remaining minutes; false otherwise
      */
     @Override
-    public boolean equals(final Object that) {
-        if (this == that) {
+    public boolean equals(final Object that)
+    {
+        if (this == that)
+        {
             return true;
         }
 
-        if (that == null) {
+        if (that == null)
+        {
             return false;
         }
 
-        if (!(that instanceof IPhone)) {
+        if (!(that instanceof IPhone))
+        {
             return false;
         }
 
         final IPhone device;
         device = (IPhone) that;
-        return this.remainingMinutes == device.getRemainingMinutes();
+
+        final boolean remainingMinutesMatch;
+        remainingMinutesMatch = (remainingMinutes == device.getRemainingMinutes());
+
+        return remainingMinutesMatch;
     }
 
     /**
@@ -123,7 +143,8 @@ public class IPhone extends IDevice {
      * @return the hash code based on remaining minutes
      */
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         return Objects.hashCode(this.remainingMinutes);
     }
 }

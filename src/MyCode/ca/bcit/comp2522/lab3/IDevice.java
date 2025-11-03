@@ -1,9 +1,10 @@
 package ca.bcit.comp2522.lab3;
+
+import java.util.Objects;
+
 /**
  * Represents a general device with a specific purpose.
  * Subclasses must define how the details of the device are printed.
- *
- * Invariant: purpose is immutable and cannot be null.
  *
  * @author Arshia Adamian
  * @author Rodrick Vizigro
@@ -11,8 +12,6 @@ package ca.bcit.comp2522.lab3;
  * @author Abdullah Alasmy
  * @version 1.0
  */
-import java.util.Objects;
-
 public abstract class IDevice
 {
     private final String purpose;
@@ -81,7 +80,9 @@ public abstract class IDevice
 
         final IDevice device;
         device = (IDevice) that;
-        return this.purpose.equals(device.getPurpose());
+
+        final boolean result = purpose.equals(device.getPurpose());
+        return result;
     }
 
     /**
